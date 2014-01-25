@@ -18,6 +18,8 @@
 		private var animations:Array = new Array();
 		
 		public function Document() {
+			var characters:Array = CharacterFactory.createCharacters();
+			
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
 			backGround = new BitmapData(800, 600, true, 0x00FF0000);			
 			canvas = backGround.clone();			
