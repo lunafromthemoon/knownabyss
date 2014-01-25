@@ -6,6 +6,7 @@
 	import flash.display.Bitmap;
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
+	import flash.events.MouseEvent;
 	
 	
 	public class Document extends MovieClip {
@@ -21,11 +22,20 @@
 			var characters:Array = CharacterFactory.createCharacters();
 			
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
+			
+			//var charA:Character = new Character(characters[0].getName(),characters[0].getEvol());
+			
+			
 			backGround = new BitmapData(800, 600, true, 0x00FF0000);			
 			canvas = backGround.clone();			
 			var canvasBC:Bitmap = new Bitmap(canvas);			
 			addChild(canvasBC);
+			this.addChild(characters[0]);
 			bitmapManager.loadAll();	
+		}
+		
+		public function clickOnChar(e:MouseEvent) {
+			trace(e.target.getName());
 		}
 		
 		private function startGame(event:Event):void{
