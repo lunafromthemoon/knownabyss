@@ -30,6 +30,8 @@
 			canvas = backGround.clone();			
 			var canvasBC:Bitmap = new Bitmap(canvas);			
 			addChild(canvasBC);
+			//characters[0].addEventListener(MouseEvent.CLICK,clickOnChar);
+			characters[0].setMask();
 			this.addChild(characters[0]);
 			bitmapManager.loadAll();	
 		}

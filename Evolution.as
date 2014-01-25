@@ -5,11 +5,10 @@
 	public class Evolution {
 
 		private var dependencies:Dictionary;
-		private var characters:Array;
 		private var maxLevel:int;
 		private var currentLevel:int;
 		
-		public function Evolution(maxLevel:int,dependencies:Dictionary,characters:Array) {
+		public function Evolution(maxLevel:int,dependencies:Dictionary) {
 			this.maxLevel = maxLevel;
 			this.dependencies = dependencies;
 			this.currentLevel = 0;
