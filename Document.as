@@ -19,7 +19,7 @@
 		
 		public function Document() {
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
-			backGround = new BitmapData(640, 480, true, 0x00FF0000);			
+			backGround = new BitmapData(800, 600, true, 0x00FF0000);			
 			canvas = backGround.clone();			
 			var canvasBC:Bitmap = new Bitmap(canvas);			
 			addChild(canvasBC);
@@ -28,6 +28,7 @@
 		
 		private function startGame(event:Event):void{
 			//load bitmaps
+			backGround.copyPixels(bitmapManager.getTileSet("Background"),new Rectangle(0,0,800,600),new Point(0,0));
 			animations = bitmapManager.getAnimationsFromTileSet("Napoleon");
 			//do we need a game loop?
 			addEventListener(Event.ENTER_FRAME, gameLoop);

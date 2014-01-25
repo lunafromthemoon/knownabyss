@@ -35,23 +35,18 @@
 			tilesXML = new XML(event.target.data);
 			for(var i:int = 0;i<tilesXML.AnimationTileSet.length();i++){
 				var animationTileSet:XML = tilesXML.AnimationTileSet[i];
-				var animationName:String = animationTileSet.@Name;				
-				toLoad.push(animationName);
+				var animationName:String = animationTileSet.@Name;
+				toLoad.push(animationName);				
 				files[animationName] = animationTileSet.@FileName;
 			}
-			
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, loadTileSet);			
 			loader.load(new URLRequest(files[toLoad[loadingIndex]]));
 		}
 		
-		public function loadAll(){
-			
+		public function loadAll(){			
 			var myLoader:URLLoader = new URLLoader();
-			//myLoader.load(new URLRequest("Animations.xml"));
 			myLoader.load(new URLRequest(fileName));
 			myLoader.addEventListener(Event.COMPLETE, allowStart);
-			
-			
 		}
 		
 		private function loadTileSet(event:Event):void {
