@@ -49,8 +49,7 @@
 		
 		public function setAnimations(a:Array)
 		{
-			animations = a;		
-			
+			animations = a;					
 			for (var i:int = 0; i < animations.length; i++)
 			{
 				if (animations[i].getName() == ANIM_STANDBY)

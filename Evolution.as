@@ -18,6 +18,7 @@
 			this.maxLevel = maxLevel;
 			this.dependencies = dependencies;
 			this.currentLevel = 0;
+			this.name = charName;
 		}
 		
 		public function toString():String{
@@ -64,7 +65,9 @@
 		}
 		
 		public function getCurrentAnimation():Animation{
-			return animations[currentLevel];
+			if (currentLevel==0)
+				return null;
+			return animations[currentLevel-1];
 		}
 	}
 	

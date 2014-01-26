@@ -1,4 +1,4 @@
-package {
+﻿package {
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.display.BitmapData;
@@ -38,26 +38,20 @@ package {
 			bitmapManager.loadAll();
 		}
 		
-		public function clickOnChar(e:Event) {
-			trace("char " +e.target.getName());
-			//hole.addEvolution(e.target as Character);
+		public function clickOnChar(e:Event) {			
+			hole.addEvolution(e.target as Character);
+			e.target.removeEventListener("evolve",clickOnChar);
 		}
 		
 		private function startGame(event:Event):void{
 			//load bitmaps
-			trace("GameScene");
 			backGround.copyPixels(bitmapManager.getTileSet("Background"),new Rectangle(0,0,800,600),new Point(0,0));			
-			
-			/*for (var c:Character in characters)
-			{
-				c.setAnimations(bitmapManager.getAnimationsFromTileSet("Character"+c.name));
-			}*/
-			
 			characters[0].setAnimations( bitmapManager.getAnimationsFromTileSet("Faith"));
 			characters[1].setAnimations( bitmapManager.getAnimationsFromTileSet("Science"));
 			characters[2].setAnimations( bitmapManager.getAnimationsFromTileSet("Innocence"));
-			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(200,200));
-			//do we need a game loop?
+			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(200,400));
+			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(264,400));
+			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(328,400));
 			addEventListener(Event.ENTER_FRAME, gameLoop);
 		}
 		
@@ -71,19 +65,11 @@ package {
 			for(var i:int = 0;i<3;i++){
 				var tile:BitmapData = characters[i].currentAnimation.getNextFrame();			
 				canvas.copyPixels(tile, tile.rect, characters[i].getPosition(), BitmapManager.getAlphaBitmap(tile.width, tile.height), null, true);
+				if (characters[i].getEvol().getCurrentAnimation()!=null) {
+					var tileEvol:BitmapData = characters[i].getEvol().getCurrentAnimation().getNextFrame();			
+				canvas.copyPixels(tileEvol, tileEvol.rect, characters[i].getEvol().position, BitmapManager.getAlphaBitmap(tileEvol.width, tileEvol.height), null, true);
+				}
 			}
-			/*
-			for(var i:int = 0;i<animations.length;i++){
-				var tile:BitmapData = animations[i].getNextFrame();			
-				canvas.copyPixels(tile, tile.rect, new Point(50, i * 70 + 50), BitmapManager.getAlphaBitmap(tile.width, tile.height), null, true);
-				
-			}*/
-			
-			/*
-			var tileEvol:BitmapData = characters[0].getEvol().getCurrentAnimation().getNextFrame();
-			
-			canvas.copyPixels(tileEvol, tileEvol.rect, characters[0].getEvol().position, BitmapManager.getAlphaBitmap(tileEvol.width, tileEvol.height), null, true);
-			*/
 		}
 	}
 }

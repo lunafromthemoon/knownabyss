@@ -17,8 +17,9 @@
 			evolutions.push(c.getEvol());
 			updateCurrentState();
 			for (var i:int = 0; i < evolutions.length; i++)
-			{
+			{				
 				evolutions[i].evolve(currentState);
+				trace(evolutions[i].name+" "+evolutions[i].currentLevel);
 			}
 		}
 		
