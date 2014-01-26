@@ -113,6 +113,22 @@
 			<Delay>10,10,10,10</Delay>
 		</Animation>
 	</AnimationTileSet>
+	<AnimationTileSet Name="BlackHole" FileName="test_evo.png">
+		<FrameWidth>64</FrameWidth>
+		<FrameHeight>64</FrameHeight>
+		<Animation Name="Level0">
+			<NumberOfFrames>4</NumberOfFrames>
+			<Delay>10,10,10,10</Delay>
+		</Animation>
+	</AnimationTileSet>
+	<AnimationTileSet Name="NewWorld" FileName="test_evo.png">
+		<FrameWidth>64</FrameWidth>
+		<FrameHeight>64</FrameHeight>
+		<Animation Name="Level0">
+			<NumberOfFrames>4</NumberOfFrames>
+			<Delay>10,10,10,10</Delay>
+		</Animation>
+	</AnimationTileSet>
 	<AnimationTileSet Name="Faith" FileName="faith.png">
 		<FrameWidth>102</FrameWidth>
 		<FrameHeight>245</FrameHeight>

@@ -108,7 +108,7 @@
 			cursor.setPosition(new Point( -50, -50));
 			cursor.draw = false;
 			(me.target.parent as Character).removeChild(cursor);
-			if (this.cursorDisplay.parent){
+			if (cursorDisplay!=null && this.cursorDisplay.parent){
 				this.cursorDisplay.parent.removeChild(cursorDisplay);
 			}		
 		}
