@@ -30,7 +30,6 @@
 				currentLevel++;				
 				if (currentLevel == 6)
 				{
-					trace("winning");
 					dispatchEvent(new Event("YouWin"));
 				}
 			}

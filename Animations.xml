@@ -29,9 +29,9 @@
 		<FrameWidth>800</FrameWidth>
 		<FrameHeight>600</FrameHeight>
 	</AnimationTileSet>
-	<AnimationTileSet Name="EvolutionA" FileName="test_evo.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
+	<AnimationTileSet Name="EvolutionA" FileName="assets/evol/1Cubo.png">
+		<FrameWidth>250</FrameWidth>
+		<FrameHeight>250</FrameHeight>
 		<Animation Name="Level0">
 			<NumberOfFrames>4</NumberOfFrames>
 			<Delay>10,10,10,10</Delay>
@@ -56,10 +56,14 @@
 			<NumberOfFrames>4</NumberOfFrames>
 			<Delay>10,10,10,10</Delay>
 		</Animation>
+		<Animation Name="Level6">
+			<NumberOfFrames>4</NumberOfFrames>
+			<Delay>10,10,10,10</Delay>
+		</Animation>
 	</AnimationTileSet>
-	<AnimationTileSet Name="EvolutionB" FileName="test_evo.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
+	<AnimationTileSet Name="EvolutionB" FileName="assets/evol/2Circulo.png">
+		<FrameWidth>250</FrameWidth>
+		<FrameHeight>250</FrameHeight>
 		<Animation Name="Level0">
 			<NumberOfFrames>4</NumberOfFrames>
 			<Delay>10,10,10,10</Delay>
@@ -81,9 +85,9 @@
 			<Delay>10,10,10,10</Delay>
 		</Animation>
 	</AnimationTileSet>
-	<AnimationTileSet Name="EvolutionC" FileName="test_evo.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
+	<AnimationTileSet Name="EvolutionC" FileName="assets/evol/3Circulo.png">
+		<FrameWidth>250</FrameWidth>
+		<FrameHeight>250</FrameHeight>
 		<Animation Name="Level0">
 			<NumberOfFrames>4</NumberOfFrames>
 			<Delay>10,10,10,10</Delay>
@@ -101,9 +105,9 @@
 			<Delay>10,10,10,10</Delay>
 		</Animation>
 	</AnimationTileSet>
-	<AnimationTileSet Name="EvolutionD" FileName="test_evo.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
+	<AnimationTileSet Name="EvolutionD" FileName="assets/evol/4Circulo.png">
+		<FrameWidth>250</FrameWidth>
+		<FrameHeight>250</FrameHeight>
 		<Animation Name="Level0">
 			<NumberOfFrames>4</NumberOfFrames>
 			<Delay>10,10,10,10</Delay>
@@ -117,9 +121,9 @@
 			<Delay>10,10,10,10</Delay>
 		</Animation>
 	</AnimationTileSet>
-	<AnimationTileSet Name="EvolutionE" FileName="test_evo.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
+	<AnimationTileSet Name="EvolutionE" FileName="assets/evol/5Cuadrado.png">
+		<FrameWidth>250</FrameWidth>
+		<FrameHeight>250</FrameHeight>
 		<Animation Name="Level0">
 			<NumberOfFrames>4</NumberOfFrames>
 			<Delay>10,10,10,10</Delay>
@@ -129,9 +133,9 @@
 			<Delay>10,10,10,10</Delay>
 		</Animation>		
 	</AnimationTileSet>
-	<AnimationTileSet Name="EvolutionF" FileName="test_evo.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
+	<AnimationTileSet Name="EvolutionF" FileName="assets/evol/6Esferas.png">
+		<FrameWidth>300</FrameWidth>
+		<FrameHeight>300</FrameHeight>
 		<Animation Name="Level0">
 			<NumberOfFrames>4</NumberOfFrames>
 			<Delay>10,10,10,10</Delay>

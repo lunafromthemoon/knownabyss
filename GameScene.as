@@ -41,13 +41,13 @@
 		public function GameScene() {			
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
 			bitmapManager.loadAll();
-			addEventListener("YouWin", onYouWin);
+			hole.addEventListener("YouWin", onYouWin);
 		}
 		
 		public function onYouWin(e:Event)
 		{			
-			addChild(new WinScene());
-			
+			var asd:WinScene = new WinScene();
+			addChild(asd);
 		}
 		
 		public function clickOnChar(e:Event) {
@@ -74,12 +74,12 @@
 			characters[3].setAnimations( bitmapManager.getAnimationsFromTileSet("Wisdom"));
 			characters[4].setAnimations( bitmapManager.getAnimationsFromTileSet("Art"));
 			characters[5].setAnimations( bitmapManager.getAnimationsFromTileSet("Innocence"));
-			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(250,100));
-			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(350,100));
-			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(450,100));
-			characters[3].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionD"),new Point(250,400));
-			characters[4].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionE"),new Point(350,400));
-			characters[5].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionF"),new Point(450,400));
+			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(275,175));
+			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(275,175));
+			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(275,175));
+			characters[3].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionD"),new Point(275,175));
+			characters[4].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionE"),new Point(275,175));
+			characters[5].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionF"),new Point(250,150));
 			
 			backgroundDisplay = new Bitmap(bitmapManager.getTileSet("Background"));
 			
@@ -134,10 +134,10 @@
 		
 		public function LevelUp(me:Event)
 		{
-			trace("level up!");
 			correctMoves++;
 			messageBox.showMessage(correctMoves, 5);
-			soundManager.FadeIn("Tune" + (correctMoves + 1));
+			if(correctMoves<6)
+				soundManager.FadeIn("Tune" + (correctMoves + 1));
 		}
 
 		public function setBlackHole(){

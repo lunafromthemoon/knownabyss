@@ -1,6 +1,7 @@
 ﻿package  {
 	
 	import flash.display.MovieClip;
+	import flash.display.Shape;
 	import flash.events.Event;
 	import flash.display.BitmapData;
 	import flash.display.Bitmap;
@@ -23,21 +24,24 @@
 		
 		public function Document() 
 		{	
-			menufadein = new Sprite();
 			gameScene = new GameScene();
-			addChild(gameScene);
-			menufadein.graphics.beginFill(0x000000);
+			menufadein = new Sprite();
+			
+			menufadein.graphics.beginFill(0x000000, 1);
 			menufadein.graphics.drawRect(0,0,800,600);
 			menufadein.graphics.endFill();			
-			this.addChild(menufadein);			
-			var timer:Timer = new Timer(500, 2);
-			timer.addEventListener(TimerEvent.TIMER_COMPLETE, startFade);			
+
+			addChild(gameScene);
+			
+			addChild(menufadein);
+			var timer:Timer = new Timer(3000, 2);
+			timer.addEventListener(TimerEvent.TIMER_COMPLETE, startFade);	
 			timer.start();
 		}
 		
 		function startFade(e:TimerEvent):void
 		{
-			var tween:Tween = new Tween(menufadein, "alpha", Regular.easeOut, 1, 0.9, 5, true);
+			var tween:Tween = new Tween(menufadein, "alpha", Regular.easeOut, 1, 0.7, 3, true);
 			tween.addEventListener(TweenEvent.MOTION_FINISH,allowStart);
 			tween.start();
 		}

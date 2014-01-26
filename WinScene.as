@@ -13,32 +13,32 @@ package {
 	{
 		var positions:Array = new Array(
 			new Point(200,10),
-			new Point(150,230),
+			new Point(150, 230),
+			new Point(0, 300),
 			new Point(450,550),
 			new Point(120,487),
 			new Point(220,92),
 			new Point(301,3),
 			new Point(10,517),
-			new Point(210,400),
-			new Point(0, 300),
+			new Point(210,400),			
 			new Point(200, 300)
 		);
 		
 		var texts:Array = new Array(
 			"J. E. Luna ~ Programming & Design",
 			"Francisco Huidobro ~ Design & Production",
+			"Joaquín Reymundo ~ 2D Artist",
 			"Matías Montenegro ~ 2D Artist",
 			"Luciano Pites ~ Programming & Design",
 			"Alexander \"NTOPEBN4\" Iartsev ~ Programming & Design",
 			"Fernando Sarmiento ~ Design & Production",
 			"Pablo Barberán ~ 2D Artist",
 			"Mario Mentasti ~ Writing",
-			"Alejandro Tiscornia ~ Music & SFX",
-			"Joaquín Reymundo ~ 2D Artist",
+			"Alejandro Tiscornia ~ Music & SFX",			
 			"Thank you very much for playing"
 		);
 		
-		var label:TextMessageBox;
+		
 		
 		var delayBetweenTexts:int = 3;
 		var index:int = 0;
@@ -58,14 +58,17 @@ package {
 		
 		public function showTeam(te:TweenEvent)
 		{
+			trace("showTeam");
 			var timer:Timer = new Timer(5000, texts.length);
-			timer.start();
 			timer.addEventListener(TimerEvent.TIMER, showNextTeamMember);
+			timer.start();
 		}
 		
 		public function showNextTeamMember(te:TimerEvent)
 		{
 			trace(index);
+			
+			var label:TextMessageBox;
 			label = new TextMessageBox(positions[index].x, positions[index].y, texts[index], 2);
 			label.showText();
 			addChild(label);
