@@ -36,6 +36,10 @@
 		public function clickOnChar(e:Event) {
 			trace(e.target.getName());
 			//hole.addEvolution(e.target as Character);
+			e.target.clickMask.removeEventListener(MouseEvent.MOUSE_OVER, onCharMouseOver);
+			e.target.clickMask.removeEventListener(MouseEvent.MOUSE_OUT, onCharMouseOut);
+			e.target.removeChild(cursor);
+			cursor.draw = false;
 			e.target.removeEventListener("evolve",clickOnChar);
 		}
 		
