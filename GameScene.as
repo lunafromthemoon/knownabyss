@@ -21,10 +21,14 @@
 		private var animations:Array = new Array();
 		var characters:Array = CharacterFactory.createCharacters();
 		var charactersDisplay:Array = new Array();
+		public var messages:Array = new Array();
+		public var messageBox:MessageBox;
 		private var cursorDisplay:Bitmap = null;
 		private var hole:Hole = new Hole();
 		private var cursor:Cursor = new Cursor();
 		public static var currentMove:int = -1;
+		public var soundManager:SoundManager;
+		public var correctMoves:int = 0;
 		
 		public function GameScene() {			
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
@@ -64,8 +68,32 @@
 			characters[4].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionE"),new Point(350,400));
 			characters[5].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionF"),new Point(450,400));
 			backgroundDisplay = new Bitmap(bitmapManager.getTileSet("Background"));
+			
+			//Load Messages
+			for (var i:int = 0; i < 6; i++)
+			{
+				messages[i] = new Bitmap(bitmapManager.getTileSet("MessageBox" + i));
+				messages[i].x = (800 - messages[i].width) / 2;
+				messages[i].y = 20;
+			}
+			messageBox = new MessageBox(messages);
+			
+			
 			backgroundDisplay.x = backgroundDisplay.y = 0;
 			this.addChild(backgroundDisplay);
+			this.addChild(messageBox);
+			
+			//Configure SoundManager
+			soundManager = new SoundManager();
+			
+			for (var i:int = 1; i < 7; i++)
+			{
+				soundManager.PlayLoop("Tune" + i);
+			}
+			soundManager.FadeIn("Tune1");
+			
+			hole.addEventListener("LevelUp", LevelUp);
+			
 			for (var i:int = 0; i < characters.length; i++)
 			{
 				characters[i].clickMask.addEventListener(MouseEvent.MOUSE_OVER, onCharMouseOver);
@@ -75,6 +103,8 @@
 			var char = characters[0];
 			characters[0] = characters[3];
 			characters[3] = char;
+			
+			
 			
 			for(var i:int = 0;i<characters.length;i++){				
 				var tile:BitmapData = characters[i].currentAnimation.getNextFrame();
@@ -90,6 +120,14 @@
 			addEventListener(Event.ENTER_FRAME, gameLoop);
 			
 			dispatchEvent(new Event("YouWin"));
+		}
+		
+		public function LevelUp(me:Event)
+		{
+			trace("level up!");
+			correctMoves++;
+			messageBox.showMessage(correctMoves, 5);
+			soundManager.FadeIn("Tune" + (correctMoves + 1));
 		}
 		
 		public function onCharMouseOver(me:MouseEvent)

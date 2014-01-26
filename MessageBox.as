@@ -1,4 +1,4 @@
-package 
+﻿package 
 {
 	import flash.display.MovieClip;
 	import flash.geom.Point;
@@ -11,40 +11,37 @@ package
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
 	import flash.filters.GlowFilter;
+	import flash.display.Bitmap;
 	
 	public class MessageBox extends MovieClip
 	{
-		var textField:TextField;
-		var pos:Point;
 		
+		public var bitMap:Bitmap;
 		var destroyDelay:int;
 		var delay:int = 2;
+		var messages:Array = new Array();
+		var numbah:int=0;
+		var isShowing:Boolean = false;
 		
-		public function MessageBox(x:int, y:int, message:String, duration:int) 
+		public function MessageBox(messagesArray:Array) 
 		{
 			super();
-			pos = new Point(x, y);
-			var textFilter = new GlowFilter(0x000000, 1, 2, 2, 2, 1);
-			
-			textField = new TextField();
-			
-			textField.alpha = 0;
-			textField.textColor = 0xffffff;
-			
-			textField.text = message;
-			textField.x = pos.x;
-			textField.y = pos.y;
-			destroyDelay = duration;
-			
-			textField.filters = [textFilter];
-			
-			addChild(textField);
+			messages = messagesArray;
 		}
 		
-		public function showText():void
+		public function showMessage(messageNumber:int, duration:int):void
 		{
-			var showTween:Tween = new Tween(textField, "alpha", Regular.easeOut, 0, 1, delay, true);
-			var destroyTimer:Timer = new Timer(1000,delay + destroyDelay);
+			if (isShowing)
+			{
+				this.removeChild(bitMap);
+			}
+			isShowing = true;
+			bitMap = messages[messageNumber - 1];
+			trace(bitMap.x, bitMap.y);
+			this.addChild(bitMap);
+			bitMap.alpha = 0;
+			var showTween:Tween = new Tween(bitMap, "alpha", Regular.easeOut, 0, 1, delay, true);
+			var destroyTimer:Timer = new Timer(1000, delay + duration);
 			destroyTimer.addEventListener(TimerEvent.TIMER_COMPLETE, removeFromParent);
 			
 			destroyTimer.start();
@@ -53,13 +50,14 @@ package
 		
 		function removeFromParent(e:TimerEvent):void
 		{
-			var hideTween:Tween = new Tween(textField, "alpha", Regular.easeOut, 1, 0, delay, true);
+			var hideTween:Tween = new Tween(bitMap, "alpha", Regular.easeOut, 1, 0, delay, true);
 			hideTween.addEventListener(TweenEvent.MOTION_FINISH, kill);
 		}
 		
 		function kill(e:TweenEvent)
 		{
-			parent.removeChild(this);
+			this.removeChild(bitMap);
+			isShowing = false;
 		}
 	}
 }

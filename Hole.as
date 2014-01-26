@@ -8,10 +8,11 @@
 		var evolutions:Vector.<Evolution> = new Vector.<Evolution>();
 		var currentState:Dictionary = new Dictionary();
 		var currentLevel:int = 0;
+		var messageBox:MessageBox;
 		
 		public function Hole()
 		{
-			
+
 		}
 		
 		public function addEvolution(c:Character)
@@ -21,6 +22,11 @@
 			if (CharacterFactory.charNames.indexOf(c.getName()) == GameScene.currentMove) 
 			{
 				//right move
+				
+				//supersonido
+				//mensajecursi
+				dispatchEvent(new Event("LevelUp"));
+				
 				currentLevel++;				
 				if (currentLevel == 6)
 				{
