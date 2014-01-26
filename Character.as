@@ -12,27 +12,29 @@
 		
 		private var charName:String;
 		private var evolution:Evolution;
-		var clickMask:Sprite;
+		public var clickMask:Sprite;
 		public var animations:Array;
 		public var currentAnimation:Animation;
+		public var maskPos:Point;
 		//animations
 		
-		public function Character(charName:String, evolution:Evolution, pos:Point,maskPos:Point ) {
+		public function Character(charName:String, evolution:Evolution, pos:Point, maskPos:Point ) {
 			this.charName = charName;
 			this.evolution = evolution;
 			x = pos.x;
 			y = pos.y;
-			setMask(maskPos);
+			this.maskPos = maskPos;
 		}
 		
-		public function setMask(maskPos:Point){			
+		public function setMask(){			
 			clickMask = new Sprite();
 			clickMask.graphics.beginFill(0xFFAAFF);
-			clickMask.graphics.drawCircle(maskPos.x, maskPos.y, 30);
+			//clickMask.graphics.drawCircle(maskPos.x, maskPos.y, 30);
+			clickMask.graphics.drawEllipse(maskPos.x, maskPos.y, currentAnimation.animFrameW * 0.8, currentAnimation.animFrameH);
 			clickMask.graphics.endFill();			
 			clickMask.alpha = 0;
 			this.addChild(clickMask);			
-			clickMask.addEventListener(MouseEvent.CLICK,clickOnChar);
+			clickMask.addEventListener(MouseEvent.CLICK, clickOnChar);
 		}
 		
 		public function clickOnChar(e:MouseEvent) {						
@@ -55,6 +57,8 @@
 				if (animations[i].getName() == ANIM_STANDBY)
 					currentAnimation = animations[i];
 			}
+			
+			setMask();
 		}
 		
 		public function getPosition():Point

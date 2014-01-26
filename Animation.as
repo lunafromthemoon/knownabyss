@@ -5,7 +5,7 @@
 	
 	public class Animation {
 
-		private var tiles:BitmapData;
+		public var tiles:BitmapData;
 		
 		private var animName:String;
 		
@@ -14,8 +14,8 @@
 		
 		private var animLastFrame:int;
 		private var animDelay:Array;
-		private var animFrameW:int;
-		private var animFrameH:int;
+		public var animFrameW:int;
+		public var animFrameH:int;
 
 		public function Animation(animName:String,tiles:BitmapData,animFrameW:int,animFrameH:int,animLastFrame:int,animDelay:Array=null) {
 			this.tiles = tiles;

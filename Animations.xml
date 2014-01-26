@@ -116,5 +116,12 @@
 			<NumberOfFrames>1</NumberOfFrames>			
 		</Animation>		
 	</AnimationTileSet>
-
+	<AnimationTileSet Name="Cursor" FileName="cursor.png">
+		<FrameWidth>16</FrameWidth>
+		<FrameHeight>16</FrameHeight>
+		<Animation Name="Anim">
+			<NumberOfFrames>4</NumberOfFrames>
+			<Delay>12,12,12,12</Delay>
+		</Animation>
+	</AnimationTileSet>
 </Animations> 

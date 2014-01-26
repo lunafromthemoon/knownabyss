@@ -15,12 +15,12 @@
 			new Point(160, 360)
 		);
 		private static var maskPositions:Array = new Array(
-			new Point(45, 25),
-			new Point(36, 30),
-			new Point(27, 20),
-			new Point(15, 15),
-			new Point(15, 15),
-			new Point(15, 15)
+			new Point(15, 0),
+			new Point(7, 0),
+			new Point(5, 0),
+			new Point(15, 0),
+			new Point(15, 0),
+			new Point(15, 0)
 		);
 		
 		
