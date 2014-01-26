@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <Animations>
+	<AnimationTileSet  Name="MessageBox0" FileName="assets/title.png">
+		<FrameWidth>325</FrameWidth>
+		<FrameHeight>63</FrameHeight>
+	</AnimationTileSet>
 	<AnimationTileSet  Name="MessageBox0" FileName="assets/sprites/FRASES_PIXEL_0.png">
 		<FrameWidth>658</FrameWidth>
 		<FrameHeight>73</FrameHeight>

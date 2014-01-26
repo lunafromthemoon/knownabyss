@@ -12,9 +12,13 @@
 	import fl.transitions.Tween;
 	import fl.transitions.TweenEvent;
 	import fl.transitions.easing.*;
+	import flash.text.TextField;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
-	
+	import fl.transitions.TweenEvent;
+	import flash.text.TextFieldAutoSize;
+	import flash.filters.GlowFilter;
+
 	public class Document extends MovieClip 
 	{
 		
@@ -25,12 +29,28 @@
 		public function Document() 
 		{	
 			gameScene = new GameScene();
+			var textField:TextField;
+			
+			var textFilter = new GlowFilter(0x000000,1,2,2,2,1)
+                        
+			textField = new TextField();
+			
+			textField.textColor = 0xffffff;
+			textField.text = "Known Abyss";
+			textField.x = 250;
+			textField.y = 25;
+			textField.scaleX = 4;
+			textField.scaleY = 4;
+			textField.filters = [textFilter];
+			
 			menufadein = new Sprite();
 			
 			menufadein.graphics.beginFill(0x000000, 1);
 			menufadein.graphics.drawRect(0,0,800,600);
 			menufadein.graphics.endFill();			
-
+			
+			menufadein.addChild(textField);
+			
 			addChild(gameScene);
 			
 			addChild(menufadein);
