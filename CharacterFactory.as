@@ -8,16 +8,16 @@
 		private static var charNames:Array = new Array("A","B","C","D","E","F");
 		private static var positions:Array = new Array(
 			new Point(50, 50),
-			new Point(50, 110),
-			new Point(50, 180),
+			new Point(250, 50),
+			new Point(400, 50),
 			new Point(50, 250),
 			new Point(50, 320),
 			new Point(50, 390)
 		);
 		private static var maskPositions:Array = new Array(
-			new Point(15, 15),
-			new Point(15, 15),
-			new Point(15, 15),
+			new Point(45, 25),
+			new Point(36, 30),
+			new Point(27, 20),
 			new Point(15, 15),
 			new Point(15, 15),
 			new Point(15, 15)

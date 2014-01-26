@@ -9,7 +9,8 @@
 	import flash.events.MouseEvent;
 	
 	
-	public class Document extends MovieClip {
+	public class Document extends MovieClip 
+	{
 		
 		public static var menuScene:MovieClip;
 		public static var gameScene:GameScene;
@@ -24,6 +25,7 @@
 		{
 			gameScene = new GameScene();
 			addChild(gameScene);
+			
 		}
 	}
 	

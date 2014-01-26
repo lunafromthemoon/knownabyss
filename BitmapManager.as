@@ -83,7 +83,7 @@
 				var delayString:String = anim.Delay.length()>0 ? anim.Delay[0] : null;
 				if(delayString!=null)
 					animDelay=delayString.split(",");
-				animArray.push(new Animation(anim.@Name,animTileSet,frameW,nof,animDelay));
+				animArray.push(new Animation(anim.@Name,animTileSet,frameW,frameH,nof,animDelay));
 			}
 			return animArray;
 		}
