@@ -21,25 +21,27 @@
 		var delay:int = 2;
 		var messages:Array = new Array();
 		var numbah:int=0;
+		var isShowing:Boolean = false;
 		
-		public function MessageBox(messagesArray:Array, messageNumber:int, duration:int) 
+		public function MessageBox(messagesArray:Array) 
 		{
 			super();
 			messages = messagesArray;
-			bitMap = new Bitmap();
-			bitMap = messagesArray[messageNumber];
-			trace(bitMap.x);
-			bitMap.alpha = 0;
-			destroyDelay = duration;
-			numbah = messageNumber;
-			addChild(bitMap);
-			trace(bitMap.x, bitMap.y);
 		}
 		
-		public function showMessage():void
+		public function showMessage(messageNumber:int, duration:int):void
 		{
-			var showTween:Tween = new Tween(bitMap, "alpha", Regular.easeOut, 0, 0.6, delay, true);
-			var destroyTimer:Timer = new Timer(1000, delay + destroyDelay);
+			if (isShowing)
+			{
+				this.removeChild(bitMap);
+			}
+			isShowing = true;
+			bitMap = messages[messageNumber - 1];
+			trace(bitMap.x, bitMap.y);
+			this.addChild(bitMap);
+			bitMap.alpha = 0;
+			var showTween:Tween = new Tween(bitMap, "alpha", Regular.easeOut, 0, 1, delay, true);
+			var destroyTimer:Timer = new Timer(1000, delay + duration);
 			destroyTimer.addEventListener(TimerEvent.TIMER_COMPLETE, removeFromParent);
 			
 			destroyTimer.start();
@@ -48,13 +50,14 @@
 		
 		function removeFromParent(e:TimerEvent):void
 		{
-			var hideTween:Tween = new Tween(bitMap, "alpha", Regular.easeOut, 0.6, 0, delay, true);
+			var hideTween:Tween = new Tween(bitMap, "alpha", Regular.easeOut, 1, 0, delay, true);
 			hideTween.addEventListener(TweenEvent.MOTION_FINISH, kill);
 		}
 		
 		function kill(e:TweenEvent)
 		{
-			parent.removeChild(this);
+			this.removeChild(bitMap);
+			isShowing = false;
 		}
 	}
 }
