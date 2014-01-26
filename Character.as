@@ -3,6 +3,8 @@
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
+	import flash.display.Sprite;
+	import flash.events.Event;
 	
 	public class Character extends MovieClip {
 		
@@ -10,20 +12,24 @@
 		
 		private var charName:String;
 		private var evolution:Evolution;
-		private var clickMask:CharacterAMask;
+		var clickMask:Sprite;
 		public var animations:Array;
 		public var currentAnimation:Animation;
 		//animations
 		
-		public function Character(charName:String, evolution:Evolution, pos:Point ) {
+		public function Character(charName:String, evolution:Evolution, pos:Point,maskPos:Point ) {
 			this.charName = charName;
 			this.evolution = evolution;
 			x = pos.x;
 			y = pos.y;
+			setMask(maskPos);
 		}
 		
-		public function setMask(){
-			clickMask = new CharacterAMask();
+		public function setMask(maskPos:Point){			
+			clickMask = new Sprite();
+			clickMask.graphics.beginFill(0xFFFFFF);
+			clickMask.graphics.drawCircle(maskPos.x, maskPos.y, 30);
+			clickMask.graphics.endFill();			
 			clickMask.alpha = 0;
 			this.addChild(clickMask);
 			clickMask.addEventListener(MouseEvent.CLICK,clickOnChar);
@@ -31,6 +37,7 @@
 		
 		public function clickOnChar(e:MouseEvent) {
 			trace(charName);
+			this.dispatchEvent(new Event("evolve"));
 		}
 		
 		public function setData() {

@@ -28,14 +28,15 @@
 			canvas = backGround.clone();			
 			var canvasBC:Bitmap = new Bitmap(canvas);			
 			addChild(canvasBC);
-			//characters[0].addEventListener(MouseEvent.CLICK,clickOnChar);
-			//characters[0].setMask();
+			characters[0].addEventListener("evolve",clickOnChar);
+			
 			this.addChild(characters[0]);
+			
 			bitmapManager.loadAll();
 		}
 		
-		public function clickOnChar(e:MouseEvent) {
-			trace(e.target.getName());
+		public function clickOnChar(e:Event) {
+			trace("on doc "+e.target.getName());
 		}
 		
 		private function startGame(event:Event):void{
