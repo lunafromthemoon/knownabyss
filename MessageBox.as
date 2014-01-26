@@ -24,8 +24,7 @@ package
 		{
 			super();
 			pos = new Point(x, y);
-			
-			var textFilter = new GlowFilter(0x000000,1,2,2,2,1)
+			var textFilter = new GlowFilter(0x000000, 1, 2, 2, 2, 1);
 			
 			textField = new TextField();
 			

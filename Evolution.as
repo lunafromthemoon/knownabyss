@@ -6,9 +6,13 @@
 
 		private var dependencies:Dictionary;
 		private var maxLevel:int;
-		private var currentLevel:int;
+		public var currentLevel:int;
+		public  var name:String;
 		
-		public function Evolution(maxLevel:int,dependencies:Dictionary) {
+		public var animations:Array;
+		public var currentAnimation:Animation;
+		
+		public function Evolution(maxLevel:int,dependencies:Dictionary,charName:String) {
 			this.maxLevel = maxLevel;
 			this.dependencies = dependencies;
 			this.currentLevel = 0;
@@ -47,12 +51,18 @@
 				}				
 				if (evolve) {
 					this.currentLevel++;
+					currentAnimation = animations[currentLevel - 1];
 					//TODO evolution visual logic
 				}
 			}			
 			
 		}
-
+		
+		public function setAnimations(a:Array)
+		{
+			animations = a;
+			currentAnimation = animations[0];
+		}
 	}
 	
 }
