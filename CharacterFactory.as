@@ -1,11 +1,20 @@
 ﻿package  {
 	
+	import flash.geom.Point;
 	import flash.utils.Dictionary;
 	
 	public class CharacterFactory {
 
 		private static var charNames:Array = new Array("A","B","C","D","E","F");
-
+		private static var positions:Array = new Array(
+			new Point(50, 50),
+			new Point(50, 110),
+			new Point(50, 180),
+			new Point(50, 250),
+			new Point(50, 320),
+			new Point(50, 390)
+		);
+		
 		public function CharacterFactory() {
 			
 		}
@@ -20,8 +29,7 @@
 			aDeps[6] = new Dictionary();
 			aDeps[6]["B"]=4;aDeps[6]["C"]=3;aDeps[6]["D"]=2;aDeps[6]["E"]=1;aDeps[6]["F"]=0;
 			var aEvol:Evolution = new Evolution(6,aDeps);
-			var aChar:CharacterA = new CharacterA();
-			aChar.setData("A",aEvol);
+			var aChar:Character = new Character("A", aEvol,positions[0]);
 			//var aChar:Character = new Character("A",aEvol);
 			characters.push(aChar);
 			//trace("A evol: "+aEvol.toString());
@@ -35,8 +43,7 @@
 			bDeps[5] = new Dictionary();
 			bDeps[5]["A"]=5;bDeps[5]["C"]=3;bDeps[5]["D"]=2;bDeps[5]["E"]=1;bDeps[5]["F"]=0;
 			var bEvol:Evolution = new Evolution(5,bDeps);
-			var bChar:Character = new CharacterB();
-			bChar.setData("B",bEvol);
+			var bChar:Character = new Character("B",bEvol,positions[1]);
 			characters.push(bChar);
 			//trace("B evol: "+bEvol.toString());
 			//C

@@ -21,5 +21,15 @@
 			<NumberOfFrames>12</NumberOfFrames>			
 		</Animation>
 	</AnimationTileSet>
-	
+	<AnimationTileSet Name="CharacterA" FileName="test.png">
+		<FrameWidth>64</FrameWidth>
+		<FrameHeight>64</FrameHeight>
+		<Animation Name="StandBy">
+			<NumberOfFrames>4</NumberOfFrames>
+			<Delay>10,10,10,10</Delay>
+		</Animation>
+		<Animation Name="dos">
+			<NumberOfFrames>4</NumberOfFrames>
+		</Animation>
+	</AnimationTileSet>
 </Animations> 
