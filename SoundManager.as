@@ -37,6 +37,11 @@
 			SoundAS.getSound(name).fadeTo(0);
 		}
 		
+		public function FadeIn(name:String)
+		{
+			SoundAS.getSound(name).fadeTo(1);
+		}
+		
 		public function FadeOutAll()
 		{
 			SoundAS.fadeMasterTo(0);
