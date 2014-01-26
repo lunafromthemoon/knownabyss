@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Animations>
-	<AnimationTileSet  Name="Background" FileName="background.png">
+	<AnimationTileSet  Name="Background" FileName="back.png">
 		<FrameWidth>800</FrameWidth>
 		<FrameHeight>600</FrameHeight>
-	</AnimationTileSet>
-	<AnimationTileSet Name="CharacterA" FileName="test.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
-		<Animation Name="StandBy">
-			<NumberOfFrames>4</NumberOfFrames>
-			<Delay>10,10,10,10</Delay>
-		</Animation>
-		<Animation Name="dos">
-			<NumberOfFrames>4</NumberOfFrames>
-		</Animation>
 	</AnimationTileSet>
 	<AnimationTileSet Name="EvolutionA" FileName="test_evo.png">
 		<FrameWidth>64</FrameWidth>
@@ -87,30 +76,45 @@
 	</AnimationTileSet>
 	<AnimationTileSet Name="Faith" FileName="faith.png">
 		<FrameWidth>102</FrameWidth>
-		<FrameHeight>231</FrameHeight>
+		<FrameHeight>245</FrameHeight>
 		<Animation Name="StandBy">
 			<NumberOfFrames>1</NumberOfFrames>			
 		</Animation>		
 	</AnimationTileSet>
 	<AnimationTileSet Name="Innocence" FileName="innocence.png">
 		<FrameWidth>51</FrameWidth>
-		<FrameHeight>174</FrameHeight>
+		<FrameHeight>176</FrameHeight>
 		<Animation Name="StandBy">
 			<NumberOfFrames>1</NumberOfFrames>			
 		</Animation>		
 	</AnimationTileSet>
 	<AnimationTileSet Name="Science" FileName="science.png">
-		<FrameWidth>74</FrameWidth>
-		<FrameHeight>231</FrameHeight>
+		<FrameWidth>76</FrameWidth>
+		<FrameHeight>232</FrameHeight>
 		<Animation Name="StandBy">
 			<NumberOfFrames>1</NumberOfFrames>			
 		</Animation>		
 	</AnimationTileSet>
-	<AnimationTileSet Name="BlackHole" FileName="blackhole.png">
-		<FrameWidth>190</FrameWidth>
-		<FrameHeight>143</FrameHeight>
+	<AnimationTileSet Name="Wisdom" FileName="wisdom.png">
+		<FrameWidth>79</FrameWidth>
+		<FrameHeight>292</FrameHeight>
 		<Animation Name="StandBy">
 			<NumberOfFrames>1</NumberOfFrames>			
 		</Animation>		
 	</AnimationTileSet>
+	<AnimationTileSet Name="Love" FileName="love.png">
+		<FrameWidth>79</FrameWidth>
+		<FrameHeight>242</FrameHeight>
+		<Animation Name="StandBy">
+			<NumberOfFrames>1</NumberOfFrames>			
+		</Animation>		
+	</AnimationTileSet>
+	<AnimationTileSet Name="Art" FileName="art.png">
+		<FrameWidth>64</FrameWidth>
+		<FrameHeight>238</FrameHeight>
+		<Animation Name="StandBy">
+			<NumberOfFrames>1</NumberOfFrames>			
+		</Animation>		
+	</AnimationTileSet>
+
 </Animations> 

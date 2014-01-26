@@ -30,7 +30,7 @@
 			addChild(canvasBC);
 			
 			
-			for(var i:int = 0;i<3;i++){
+			for(var i:int = 0;i<characters.length;i++){
 				this.addChild(characters[i]);				
 				characters[i].addEventListener("evolve",clickOnChar);
 			}
@@ -38,20 +38,29 @@
 			bitmapManager.loadAll();
 		}
 		
-		public function clickOnChar(e:Event) {			
-			hole.addEvolution(e.target as Character);
+		public function clickOnChar(e:Event) {
+			trace(e.target.getName());
+			//hole.addEvolution(e.target as Character);
 			e.target.removeEventListener("evolve",clickOnChar);
 		}
 		
 		private function startGame(event:Event):void{
 			//load bitmaps
 			backGround.copyPixels(bitmapManager.getTileSet("Background"),new Rectangle(0,0,800,600),new Point(0,0));			
-			characters[0].setAnimations( bitmapManager.getAnimationsFromTileSet("Faith"));
+			characters[0].setAnimations( bitmapManager.getAnimationsFromTileSet("Faith"));			
 			characters[1].setAnimations( bitmapManager.getAnimationsFromTileSet("Science"));
-			characters[2].setAnimations( bitmapManager.getAnimationsFromTileSet("Innocence"));
+			characters[2].setAnimations( bitmapManager.getAnimationsFromTileSet("Love"));
+			characters[3].setAnimations( bitmapManager.getAnimationsFromTileSet("Wisdom"));
+			characters[4].setAnimations( bitmapManager.getAnimationsFromTileSet("Art"));
+			characters[5].setAnimations( bitmapManager.getAnimationsFromTileSet("Innocence"));
 			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(200,400));
 			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(264,400));
 			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(328,400));
+			
+			var char = characters[0];
+			characters[0] = characters[3];
+			characters[3] = char;
+			
 			addEventListener(Event.ENTER_FRAME, gameLoop);
 		}
 		
@@ -62,7 +71,7 @@
 		
 		private function drawCanvas():void {
 			iteration++;
-			for(var i:int = 0;i<3;i++){
+			for(var i:int = 0;i<characters.length;i++){
 				var tile:BitmapData = characters[i].currentAnimation.getNextFrame();			
 				canvas.copyPixels(tile, tile.rect, characters[i].getPosition(), BitmapManager.getAlphaBitmap(tile.width, tile.height), null, true);
 				if (characters[i].getEvol().getCurrentAnimation()!=null) {

@@ -4,15 +4,15 @@
 	import flash.utils.Dictionary;
 	
 	public class CharacterFactory {
-
+		//faith, science, love, wisdom, art, innocence
 		private static var charNames:Array = new Array("A","B","C","D","E","F");
 		private static var positions:Array = new Array(
-			new Point(50, 50),
-			new Point(250, 50),
-			new Point(400, 50),
-			new Point(50, 250),
-			new Point(50, 320),
-			new Point(50, 390)
+			new Point(550, 300),
+			new Point(150, 140),
+			new Point(600, 240),
+			new Point(550, 100),
+			new Point(110, 240),
+			new Point(160, 360)
 		);
 		private static var maskPositions:Array = new Array(
 			new Point(45, 25),
@@ -91,7 +91,7 @@
 			fDeps[1]["A"]=5;fDeps[1]["B"]=4;fDeps[1]["C"]=3;fDeps[1]["D"]=2;fDeps[1]["E"]=1;
 			var fEvol:Evolution = new Evolution(1,fDeps,charNames[5]);
 			var fChar:Character = new Character("F",eEvol,positions[5],maskPositions[5]);
-			//characters.push(fChar);
+			characters.push(fChar);
 			//trace("F evol: "+fEvol.toString());
 			return characters;
 		}
