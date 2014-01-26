@@ -62,8 +62,8 @@
 			characters[3].setAnimations( bitmapManager.getAnimationsFromTileSet("Wisdom"));
 			characters[4].setAnimations( bitmapManager.getAnimationsFromTileSet("Art"));
 			characters[5].setAnimations( bitmapManager.getAnimationsFromTileSet("Innocence"));
-			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(200,100));
-			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(200,100));
+			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(250,100));
+			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(250,100));
 			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(328,400));
 			backgroundDisplay = new Bitmap(bitmapManager.getTileSet("Background"));
 			backgroundDisplay.x = backgroundDisplay.y = 0;
