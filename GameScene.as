@@ -21,6 +21,8 @@
 		private var animations:Array = new Array();
 		var characters:Array = CharacterFactory.createCharacters();
 		var charactersDisplay:Array = new Array();
+		public var messages:Array = new Array();
+		public var messageBox:MessageBox;
 		private var cursorDisplay:Bitmap = null;
 		private var hole:Hole = new Hole();
 		private var cursor:Cursor = new Cursor();
@@ -69,8 +71,15 @@
 			characters[4].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionE"),new Point(350,400));
 			characters[5].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionF"),new Point(450,400));
 			backgroundDisplay = new Bitmap(bitmapManager.getTileSet("Background"));
+			for (var i:int = 0; i < 6; i++)
+			{
+				messages[i] = new Bitmap(bitmapManager.getTileSet("MessageBox" + i));
+				messages[i].x = (800 - messages[i].width) / 2;
+				messages[i].y = 20;
+			}
 			backgroundDisplay.x = backgroundDisplay.y = 0;
 			this.addChild(backgroundDisplay);
+			
 			for (var i:int = 0; i < characters.length; i++)
 			{
 				characters[i].clickMask.addEventListener(MouseEvent.MOUSE_OVER, onCharMouseOver);
@@ -80,6 +89,8 @@
 			var char = characters[0];
 			characters[0] = characters[3];
 			characters[3] = char;
+			
+			
 			
 			for(var i:int = 0;i<characters.length;i++){				
 				var tile:BitmapData = characters[i].currentAnimation.getNextFrame();

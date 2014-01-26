@@ -1,6 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <Animations>
+	<AnimationTileSet  Name="MessageBox0" FileName="assets/sprites/FRASES_PIXEL_0.png">
+		<FrameWidth>658</FrameWidth>
+		<FrameHeight>73</FrameHeight>
+	</AnimationTileSet>
+	<AnimationTileSet  Name="MessageBox1" FileName="assets/sprites/FRASES_PIXEL_1.png">
+		<FrameWidth>605</FrameWidth>
+		<FrameHeight>76</FrameHeight>
+	</AnimationTileSet>
+	<AnimationTileSet  Name="MessageBox2" FileName="assets/sprites/FRASES_PIXEL_2.png">
+		<FrameWidth>564</FrameWidth>
+		<FrameHeight>70</FrameHeight>
+	</AnimationTileSet>
+	<AnimationTileSet  Name="MessageBox3" FileName="assets/sprites/FRASES_PIXEL_3.png">
+		<FrameWidth>530</FrameWidth>
+		<FrameHeight>108</FrameHeight>
+	</AnimationTileSet>
+	<AnimationTileSet  Name="MessageBox4" FileName="assets/sprites/FRASES_PIXEL_4.png">
+		<FrameWidth>529</FrameWidth>
+		<FrameHeight>105</FrameHeight>
+	</AnimationTileSet>
+	<AnimationTileSet  Name="MessageBox5" FileName="assets/sprites/FRASES_PIXEL_5.png">
+		<FrameWidth>636</FrameWidth>
+		<FrameHeight>104</FrameHeight>
+	</AnimationTileSet>
 	<AnimationTileSet  Name="Background" FileName="back.png">
 		<FrameWidth>800</FrameWidth>
 		<FrameHeight>600</FrameHeight>
