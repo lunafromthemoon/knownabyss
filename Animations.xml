@@ -32,4 +32,21 @@
 			<NumberOfFrames>4</NumberOfFrames>
 		</Animation>
 	</AnimationTileSet>
+	<AnimationTileSet Name="EvolutionA" FileName="hole.png">
+		<FrameWidth>64</FrameWidth>
+		<FrameHeight>64</FrameHeight>
+		<Animation Name="Level0">
+			<NumberOfFrames>4</NumberOfFrames>
+			<Delay>10,10,10,10</Delay>
+		</Animation>
+		<Animation Name="Level1">
+			<NumberOfFrames>4</NumberOfFrames>
+		</Animation>
+		<Animation Name="Level2">
+			<NumberOfFrames>4</NumberOfFrames>
+		</Animation>
+		<Animation Name="Level3">
+			<NumberOfFrames>4</NumberOfFrames>
+		</Animation>
+	</AnimationTileSet>
 </Animations> 

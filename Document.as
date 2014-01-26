@@ -18,6 +18,7 @@
 		private var iteration:int = 0;
 		private var animations:Array = new Array();
 		var characters:Array = CharacterFactory.createCharacters();
+		private var hole:Hole = new Hole();
 		
 		public function Document() {			
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
@@ -36,7 +37,7 @@
 		}
 		
 		public function clickOnChar(e:Event) {
-			trace("on doc "+e.target.getName());
+			hole.addEvolution(e.target as Character);
 		}
 		
 		private function startGame(event:Event):void{
@@ -49,7 +50,7 @@
 			}*/
 			
 			characters[0].setAnimations( bitmapManager.getAnimationsFromTileSet("CharacterA"));
-			
+			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(200,200));
 			//do we need a game loop?
 			addEventListener(Event.ENTER_FRAME, gameLoop);
 		}
@@ -69,7 +70,9 @@
 			}*/
 			
 			var tile:BitmapData = characters[0].currentAnimation.getNextFrame();
+			var tileEvol:BitmapData = characters[0].getEvol().getCurrentAnimation().getNextFrame();
 			canvas.copyPixels(tile, tile.rect, characters[0].getPosition(), BitmapManager.getAlphaBitmap(tile.width, tile.height), null, true);
+			canvas.copyPixels(tileEvol, tileEvol.rect, characters[0].getEvol().position, BitmapManager.getAlphaBitmap(tileEvol.width, tileEvol.height), null, true);
 		}
 	}
 	

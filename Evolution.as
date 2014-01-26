@@ -1,6 +1,9 @@
 ﻿package  {
 	
 	import flash.utils.Dictionary;
+	import flash.display.Bitmap;
+	import flash.geom.Point;
+	import flash.display.MovieClip;
 	
 	public class Evolution {
 
@@ -8,9 +11,8 @@
 		private var maxLevel:int;
 		public var currentLevel:int;
 		public  var name:String;
-		
+		public var position:Point;
 		public var animations:Array;
-		public var currentAnimation:Animation;
 		
 		public function Evolution(maxLevel:int,dependencies:Dictionary,charName:String) {
 			this.maxLevel = maxLevel;
@@ -42,26 +44,27 @@
 		public function evolve(currentState:Dictionary){			
 			if(this.currentLevel<this.maxLevel){
 				var evolve:Boolean = true;
-				var levelDeps:Dictionary = this.dependencies[currentLevel];
-				trace(showDictionary(levelDeps));
+				var levelDeps:Dictionary = this.dependencies[currentLevel];				
 				for (var key:* in levelDeps) {
 					if (levelDeps[key]>currentState[key]){
 						evolve = false;
 					}
 				}				
 				if (evolve) {
-					this.currentLevel++;
-					currentAnimation = animations[currentLevel - 1];
-					//TODO evolution visual logic
+					this.currentLevel++;					
 				}
 			}			
 			
 		}
 		
-		public function setAnimations(a:Array)
+		public function setAnimations(a:Array,pos:Point)
 		{
+			position = pos;
 			animations = a;
-			currentAnimation = animations[0];
+		}
+		
+		public function getCurrentAnimation():Animation{
+			return animations[currentLevel];
 		}
 	}
 	

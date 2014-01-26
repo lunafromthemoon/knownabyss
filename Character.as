@@ -35,8 +35,7 @@
 			clickMask.addEventListener(MouseEvent.CLICK,clickOnChar);
 		}
 		
-		public function clickOnChar(e:MouseEvent) {
-			trace(charName);
+		public function clickOnChar(e:MouseEvent) {			
 			this.dispatchEvent(new Event("evolve"));
 		}
 		
