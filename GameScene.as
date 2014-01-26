@@ -30,18 +30,13 @@
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
 			bitmapManager.loadAll();
 			addEventListener("YouWin", onYouWin);
-			dispatchEvent(new Event("YouWin"));
 		}
 		
 		public function onYouWin(e:Event)
 		{
-			var fade = new Shape();
-			fade.graphics.beginFill(0x000000, 1);
-			fade.graphics.drawRect(0, 0, 800, 600);
-			fade.graphics.endFill();
+			trace("YouWin");
 			
-			var fadeInTween = new Tween(fade, "alpha", None.easeOut, 0, 0.7, 2, true);
-			fadeInTween.start();
+			addChild(new WinScene());
 		}
 		
 		public function clickOnChar(e:Event) {
@@ -93,6 +88,8 @@
 			
 			cursor.setAnimation(bitmapManager.getAnimationsFromTileSet("Cursor")[0]);
 			addEventListener(Event.ENTER_FRAME, gameLoop);
+			
+			dispatchEvent(new Event("YouWin"));
 		}
 		
 		public function onCharMouseOver(me:MouseEvent)
