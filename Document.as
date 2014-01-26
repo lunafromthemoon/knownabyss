@@ -17,6 +17,7 @@
 		
 		public function Document() 
 		{		
+			trace("Document");
 			addEventListener("GameStart", startGame);
 			dispatchEvent(new Event("GameStart"));
 		}
