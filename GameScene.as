@@ -119,7 +119,7 @@
 			cursor.setAnimation(bitmapManager.getAnimationsFromTileSet("Cursor")[0]);
 			addEventListener(Event.ENTER_FRAME, gameLoop);
 			
-			dispatchEvent(new Event("YouWin"));
+			//dispatchEvent(new Event("YouWin"));
 		}
 		
 		public function LevelUp(me:Event)
