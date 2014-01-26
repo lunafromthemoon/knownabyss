@@ -90,7 +90,7 @@
 			fDeps[1] = new Dictionary();
 			fDeps[1]["A"]=5;fDeps[1]["B"]=4;fDeps[1]["C"]=3;fDeps[1]["D"]=2;fDeps[1]["E"]=1;
 			var fEvol:Evolution = new Evolution(1,fDeps,charNames[5]);
-			var fChar:Character = new Character("F",eEvol,positions[5],maskPositions[5]);
+			var fChar:Character = new Character("F",fEvol,positions[5],maskPositions[5]);
 			characters.push(fChar);
 			//trace("F evol: "+fEvol.toString());
 			return characters;

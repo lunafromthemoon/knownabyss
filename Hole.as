@@ -21,9 +21,10 @@
 			if (CharacterFactory.charNames.indexOf(c.getName()) == GameScene.currentMove) 
 			{
 				//right move
-				currentLevel++;
+				currentLevel++;				
 				if (currentLevel == 6)
 				{
+					trace("winning");
 					dispatchEvent(new Event("YouWin"));
 				}
 			}
@@ -35,7 +36,7 @@
 			for (var i:int = 0; i < evolutions.length; i++)
 			{				
 				evolutions[i].evolve(currentState);
-				trace(evolutions[i].name+" "+evolutions[i].currentLevel);
+				//trace(evolutions[i].name+" "+evolutions[i].currentLevel);
 			}
 		}
 		

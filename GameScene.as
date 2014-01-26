@@ -45,7 +45,7 @@
 		}
 		
 		public function clickOnChar(e:Event) {
-			trace(e.target.getName());
+			//trace(e.target.getName());
 			hole.addEvolution(e.target as Character);
 			e.target.clickMask.removeEventListener(MouseEvent.MOUSE_OVER, onCharMouseOver);
 			e.target.clickMask.removeEventListener(MouseEvent.MOUSE_OUT, onCharMouseOut);
@@ -63,8 +63,11 @@
 			characters[4].setAnimations( bitmapManager.getAnimationsFromTileSet("Art"));
 			characters[5].setAnimations( bitmapManager.getAnimationsFromTileSet("Innocence"));
 			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(250,100));
-			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(250,100));
-			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(328,400));
+			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(350,100));
+			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(450,100));
+			characters[3].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionD"),new Point(250,400));
+			characters[4].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionE"),new Point(350,400));
+			characters[5].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionF"),new Point(450,400));
 			backgroundDisplay = new Bitmap(bitmapManager.getTileSet("Background"));
 			backgroundDisplay.x = backgroundDisplay.y = 0;
 			this.addChild(backgroundDisplay);

@@ -52,7 +52,7 @@
 					}
 				}				
 				if (evolve) {
-					this.currentLevel=1;					
+					this.currentLevel++;					
 				}
 			}			
 			
