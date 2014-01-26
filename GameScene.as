@@ -6,36 +6,29 @@
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
 	import flash.events.MouseEvent;
+	import flash.filters.GlowFilter; 
 	
 	public class GameScene extends MovieClip 
 	{
 		
 		private var bitmapManager:BitmapManager = new BitmapManager("Animations.xml");
-		private var tileSet:BitmapData;
-		private var canvas:BitmapData
-		private var backGround:BitmapData;
+		private var backgroundDisplay:Bitmap;
 		private var iteration:int = 0;
 		private var animations:Array = new Array();
 		var characters:Array = CharacterFactory.createCharacters();
+		var charactersDisplay:Array = new Array();
+		private var cursorDisplay:Bitmap = null;
 		private var hole:Hole = new Hole();
 		private var cursor:Cursor = new Cursor();
 		
 		public function GameScene() {			
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
-			
-			//var charA:Character = new Character(characters[0].getName(),characters[0].getEvol());
-			
-			backGround = new BitmapData(800, 600, true, 0x00FF0000);			
-			canvas = backGround.clone();			
-			var canvasBC:Bitmap = new Bitmap(canvas);			
-			addChild(canvasBC);
-			
 			bitmapManager.loadAll();
 		}
 		
 		public function clickOnChar(e:Event) {
 			trace(e.target.getName());
-			//hole.addEvolution(e.target as Character);
+			hole.addEvolution(e.target as Character);
 			e.target.clickMask.removeEventListener(MouseEvent.MOUSE_OVER, onCharMouseOver);
 			e.target.clickMask.removeEventListener(MouseEvent.MOUSE_OUT, onCharMouseOut);
 			e.target.removeChild(cursor);
@@ -44,8 +37,7 @@
 		}
 		
 		private function startGame(event:Event):void{
-			//load bitmaps
-			backGround.copyPixels(bitmapManager.getTileSet("Background"),new Rectangle(0,0,800,600),new Point(0,0));			
+			//load bitmaps			
 			characters[0].setAnimations( bitmapManager.getAnimationsFromTileSet("Faith"));			
 			characters[1].setAnimations( bitmapManager.getAnimationsFromTileSet("Science"));
 			characters[2].setAnimations( bitmapManager.getAnimationsFromTileSet("Love"));
@@ -55,7 +47,9 @@
 			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(200,400));
 			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(264,400));
 			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(328,400));
-			
+			backgroundDisplay = new Bitmap(bitmapManager.getTileSet("Background"));
+			backgroundDisplay.x = backgroundDisplay.y = 0;
+			this.addChild(backgroundDisplay);
 			for (var i:int = 0; i < characters.length; i++)
 			{
 				characters[i].clickMask.addEventListener(MouseEvent.MOUSE_OVER, onCharMouseOver);
@@ -66,7 +60,12 @@
 			characters[0] = characters[3];
 			characters[3] = char;
 			
-			for(var i:int = 0;i<characters.length;i++){
+			for(var i:int = 0;i<characters.length;i++){				
+				var tile:BitmapData = characters[i].currentAnimation.getNextFrame();
+				var bitmapChar:Bitmap = new Bitmap(tile);
+				bitmapChar.x = characters[i].x;
+				bitmapChar.y = characters[i].y;
+				this.addChild(bitmapChar);
 				this.addChild(characters[i]);				
 				characters[i].addEventListener("evolve",clickOnChar);
 			}
@@ -80,8 +79,6 @@
 			var char:Character = me.target.parent as Character;
 			char.addChild(cursor);
 			cursor.draw = true;
-			
-			
 			cursor.setPosition(new Point(char.x + char.currentAnimation.animFrameW/2 - cursor.animation.animFrameW/2, char.y - cursor.animation.animFrameH * 1.5));
 		}
 		
@@ -90,29 +87,40 @@
 			cursor.setPosition(new Point( -50, -50));
 			cursor.draw = false;
 			(me.target.parent as Character).removeChild(cursor);
+			if (this.cursorDisplay.parent){
+				this.cursorDisplay.parent.removeChild(cursorDisplay);
+			}		
 		}
 		
 		public function gameLoop(e:Event) {
-			canvas.copyPixels(backGround,backGround.rect, new Point(0,0));
-			drawCanvas();
+			drawCharacters();
 		}
 		
-		private function drawCanvas():void {
+		private function drawCharacters():void {
 			iteration++;
 			for(var i:int = 0;i<characters.length;i++){
-				var tile:BitmapData = characters[i].currentAnimation.getNextFrame();			
-				canvas.copyPixels(tile, tile.rect, characters[i].getPosition(), BitmapManager.getAlphaBitmap(tile.width, tile.height), null, true);
-				if (characters[i].getEvol().getCurrentAnimation()!=null) {
-					var tileEvol:BitmapData = characters[i].getEvol().getCurrentAnimation().getNextFrame();			
-				canvas.copyPixels(tileEvol, tileEvol.rect, characters[i].getEvol().position, BitmapManager.getAlphaBitmap(tileEvol.width, tileEvol.height), null, true);
+				if (this.charactersDisplay[i]!=null && this.charactersDisplay[i].parent){
+					this.charactersDisplay[i].parent.removeChild(charactersDisplay[i]);
 				}
+				var anim:Animation = characters[i].getEvol().getCurrentAnimation();
+				if (anim!=null) {
+					var tile:BitmapData = anim.getNextFrame();					
+					this.charactersDisplay[i] = new Bitmap(tile);
+					this.charactersDisplay[i].x = this.charactersDisplay[i].y = 400;
+					this.addChild(charactersDisplay[i]);
+				}				
 			}
 			
-			if (cursor.draw)
-			{
-				var tileCursor = cursor.animation.getNextFrame();
-				canvas.copyPixels(tileCursor, tileCursor.rect, cursor.getPosition(), BitmapManager.getAlphaBitmap(tileCursor.width, tileCursor.height), null, true);
+			if (cursorDisplay!=null && this.cursorDisplay.parent){
+				this.cursorDisplay.parent.removeChild(cursorDisplay);			
 			}
+			if (cursor.draw) {
+				var tileCursor = cursor.animation.getNextFrame()
+				cursorDisplay = new Bitmap(tileCursor);
+				cursorDisplay.x = cursor.getPosition().x;
+				cursorDisplay.y = cursor.getPosition().y;
+				this.addChild(cursorDisplay);
+			}			
 		}
 	}
 }
