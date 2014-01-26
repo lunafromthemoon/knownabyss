@@ -32,17 +32,6 @@
 			upperTween = new Tween(UpperScreen, "y", Strong.easeOut, UpperScreen.y, posY - bufferY, 60, false);
 			lowerTween.start();
 			upperTween.start();
-			lowerTween.addEventListener(TweenEvent.MOTION_FINISH, onLowerFinish);
-			function onLowerFinish(e:TweenEvent):void
-			{
-				trace("LowerScreen: " + lowerTween.obj.y);
-			}
-			upperTween.addEventListener(TweenEvent.MOTION_FINISH, onUpperFinish);
-			function onUpperFinish(e:TweenEvent):void
-			{
-				trace("UpperScreen: " + upperTween.obj.y);
-			}
-			
 		}
 
 	}
