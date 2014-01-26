@@ -137,13 +137,13 @@
 			<Delay>10,10,10,10</Delay>
 		</Animation>
 	</AnimationTileSet>
-	<AnimationTileSet Name="BlackHole" FileName="test_evo.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
-		<Animation Name="Level0">
-			<NumberOfFrames>4</NumberOfFrames>
-			<Delay>10,10,10,10</Delay>
-		</Animation>
+	<AnimationTileSet Name="BlackHole" FileName="sphere.png">
+		<FrameWidth>110</FrameWidth>
+		<FrameHeight>85</FrameHeight>
+	</AnimationTileSet>
+	<AnimationTileSet Name="BlackHoleClouds" FileName="smoke.png">
+		<FrameWidth>182</FrameWidth>
+		<FrameHeight>135</FrameHeight>
 	</AnimationTileSet>
 	<AnimationTileSet Name="NewWorld" FileName="test_evo.png">
 		<FrameWidth>64</FrameWidth>
@@ -195,12 +195,12 @@
 			<NumberOfFrames>1</NumberOfFrames>			
 		</Animation>		
 	</AnimationTileSet>
-	<AnimationTileSet Name="Cursor" FileName="cursor.png">
-		<FrameWidth>16</FrameWidth>
-		<FrameHeight>16</FrameHeight>
+	<AnimationTileSet Name="Cursor" FileName="cursorgem.png">
+		<FrameWidth>27</FrameWidth>
+		<FrameHeight>27</FrameHeight>
 		<Animation Name="Anim">
-			<NumberOfFrames>4</NumberOfFrames>
-			<Delay>12,12,12,12</Delay>
+			<NumberOfFrames>24</NumberOfFrames>
+			<Delay>3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3</Delay>
 		</Animation>
 	</AnimationTileSet>
 </Animations> 

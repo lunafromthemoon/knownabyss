@@ -7,12 +7,12 @@
 		//faith, science, love, wisdom, art, innocence
 		public static var charNames:Array = new Array("A","B","C","D","E","F");
 		private static var positions:Array = new Array(
-			new Point(550, 300),
+			new Point(550, 280),
 			new Point(150, 140),
-			new Point(600, 240),
+			new Point(600, 185),
 			new Point(550, 100),
-			new Point(110, 240),
-			new Point(160, 360)
+			new Point(110, 220),
+			new Point(160, 330)
 		);
 		private static var maskPositions:Array = new Array(
 			new Point(15, 0),

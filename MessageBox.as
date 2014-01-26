@@ -33,7 +33,7 @@
 		{
 			if (isShowing)
 			{
-				this.removeChild(bitMap);
+				this.removeChild(bitMap);			
 			}
 			isShowing = true;
 			bitMap = messages[messageNumber - 1];

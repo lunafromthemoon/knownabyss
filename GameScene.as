@@ -18,7 +18,6 @@
 		private var bitmapManager:BitmapManager = new BitmapManager("Animations.xml");
 		private var backgroundDisplay:Bitmap;
 		private var iteration:int = 0;
-		private var animations:Array = new Array();
 		var characters:Array = CharacterFactory.createCharacters();
 		var charactersDisplay:Array = new Array();
 		public var messages:Array = new Array();
@@ -27,8 +26,17 @@
 		private var hole:Hole = new Hole();
 		private var cursor:Cursor = new Cursor();
 		public static var currentMove:int = -1;
+
 		public var soundManager:SoundManager;
 		public var correctMoves:int = 0;
+
+		var enlargeX:Tween;
+		var enlargeY:Tween;
+		var upAndDown:Tween;
+		
+		private var blackHoleDisplay:Bitmap;
+		private var blackHoleCloudsDisplay:Bitmap;
+
 		
 		public function GameScene() {			
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
@@ -37,13 +45,18 @@
 		}
 		
 		public function onYouWin(e:Event)
-		{
-			trace("YouWin");
-			
+		{			
 			addChild(new WinScene());
+			
 		}
 		
 		public function clickOnChar(e:Event) {
+			if(blackHoleDisplay!=null){
+				this.removeChild(blackHoleDisplay);
+				this.removeChild(blackHoleCloudsDisplay);
+				blackHoleDisplay=null;
+				
+			}
 			//trace(e.target.getName());
 			hole.addEvolution(e.target as Character);
 			e.target.clickMask.removeEventListener(MouseEvent.MOUSE_OVER, onCharMouseOver);
@@ -67,6 +80,7 @@
 			characters[3].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionD"),new Point(250,400));
 			characters[4].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionE"),new Point(350,400));
 			characters[5].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionF"),new Point(450,400));
+			
 			backgroundDisplay = new Bitmap(bitmapManager.getTileSet("Background"));
 			
 			//Load Messages
@@ -98,14 +112,10 @@
 			{
 				characters[i].clickMask.addEventListener(MouseEvent.MOUSE_OVER, onCharMouseOver);
 				characters[i].clickMask.addEventListener(MouseEvent.MOUSE_OUT, onCharMouseOut);
-			}
-			
+			}			
 			var char = characters[0];
 			characters[0] = characters[3];
 			characters[3] = char;
-			
-			
-			
 			for(var i:int = 0;i<characters.length;i++){				
 				var tile:BitmapData = characters[i].currentAnimation.getNextFrame();
 				var bitmapChar:Bitmap = new Bitmap(tile);
@@ -115,7 +125,7 @@
 				this.addChild(characters[i]);				
 				characters[i].addEventListener("evolve",clickOnChar);
 			}
-			
+			setBlackHole();
 			cursor.setAnimation(bitmapManager.getAnimationsFromTileSet("Cursor")[0]);
 			addEventListener(Event.ENTER_FRAME, gameLoop);
 			
@@ -128,6 +138,30 @@
 			correctMoves++;
 			messageBox.showMessage(correctMoves, 5);
 			soundManager.FadeIn("Tune" + (correctMoves + 1));
+		}
+
+		public function setBlackHole(){
+			blackHoleDisplay = new Bitmap(bitmapManager.getTileSet("BlackHole"));
+			blackHoleCloudsDisplay = new Bitmap(bitmapManager.getTileSet("BlackHoleClouds"));
+			this.addChild(blackHoleDisplay);
+			this.addChild(blackHoleCloudsDisplay);
+			blackHoleCloudsDisplay.x=310;
+			upAndDown = new Tween(blackHoleCloudsDisplay, "y", Regular.easeOut, 290, 285, 2, true);
+			enlargeX = new Tween(blackHoleDisplay, "scaleX", Regular.easeOut, 1, 1.03, 1, true);
+			enlargeY = new Tween(blackHoleDisplay, "scaleY", Regular.easeOut, 1, 1.1, 1, true);
+			enlargeX.addEventListener(TweenEvent.MOTION_FINISH,rewind);
+			upAndDown.addEventListener(TweenEvent.MOTION_FINISH,rewindClouds);
+			enlargeX.start();
+			enlargeY.start();
+			upAndDown.start();			
+		}
+		
+		public function rewind(me:TweenEvent){
+			enlargeX.yoyo();
+			enlargeY.yoyo();
+		}
+		public function rewindClouds(me:TweenEvent){
+			upAndDown.yoyo();
 		}
 		
 		public function onCharMouseOver(me:MouseEvent)
@@ -167,7 +201,10 @@
 					this.addChild(charactersDisplay[i]);
 				}				
 			}
-			
+			if (blackHoleDisplay!=null){
+				blackHoleDisplay.x = stage.width/2 - blackHoleDisplay.width/2;
+				blackHoleDisplay.y = stage.height/2 - blackHoleDisplay.height/2;
+			}
 			if (cursorDisplay!=null && this.cursorDisplay.parent){
 				this.cursorDisplay.parent.removeChild(cursorDisplay);			
 			}
