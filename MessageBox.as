@@ -37,6 +37,7 @@
 			}
 			isShowing = true;
 			bitMap = messages[messageNumber - 1];
+			bitMap.visible = true;
 			trace(bitMap.x, bitMap.y);
 			this.addChild(bitMap);
 			bitMap.alpha = 0;
@@ -56,7 +57,10 @@
 		
 		function kill(e:TweenEvent)
 		{
-			this.removeChild(bitMap);
+			if (isShowing)
+			{
+				this.removeChild(bitMap);
+			}
 			isShowing = false;
 		}
 	}
