@@ -9,7 +9,12 @@
 		var rootDirectory:String = "assets/sounds/";
 
 		public function SoundManager() {
-			SoundAS.loadSound(rootDirectory + "Placeholder.mp3", "Placeholder");
+			SoundAS.loadSound(rootDirectory + "AperturaOjosV2.mp3", "AperturaOjos");
+			SoundAS.loadSound(rootDirectory + "The-Cage.mp3", "TemaFondo");
+			SoundAS.loadSound(rootDirectory + "BigCrunch.mp3", "ResetAgujero");
+			SoundAS.loadSound(rootDirectory + "Fx_platillo.mp3", "Platillo");
+			SoundAS.loadSound(rootDirectory + "crystalCrow.mp3", "Inframundo");
+			SoundAS.loadSound(rootDirectory + "crawlback.mp3", "Simulador");
 		}
 		
 		public function LoadSound(file:String, name:String)
