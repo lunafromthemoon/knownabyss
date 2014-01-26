@@ -27,20 +27,16 @@
 		
 		public function setMask(maskPos:Point){			
 			clickMask = new Sprite();
-			clickMask.graphics.beginFill(0xFFFFFF);
+			clickMask.graphics.beginFill(0xFFAAFF);
 			clickMask.graphics.drawCircle(maskPos.x, maskPos.y, 30);
 			clickMask.graphics.endFill();			
 			clickMask.alpha = 0;
-			this.addChild(clickMask);
+			this.addChild(clickMask);			
 			clickMask.addEventListener(MouseEvent.CLICK,clickOnChar);
 		}
 		
-		public function clickOnChar(e:MouseEvent) {			
+		public function clickOnChar(e:MouseEvent) {						
 			this.dispatchEvent(new Event("evolve"));
-		}
-		
-		public function setData() {
-			
 		}
 		
 		public function getName():String {

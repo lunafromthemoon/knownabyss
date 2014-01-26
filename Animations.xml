@@ -5,22 +5,6 @@
 		<FrameWidth>800</FrameWidth>
 		<FrameHeight>600</FrameHeight>
 	</AnimationTileSet>
-	<AnimationTileSet  Name="Napoleon" FileName="Napoleon_cycles.png">
-		<FrameWidth>64</FrameWidth>
-		<FrameHeight>64</FrameHeight>
-		<Animation Name="Start_Walk_Left_Stop">
-			<NumberOfFrames>14</NumberOfFrames>
-		</Animation>
-		<Animation Name="Walk_Left">
-			<NumberOfFrames>9</NumberOfFrames>			
-		</Animation>
-		<Animation Name="Walk_Left_Inf">
-			<NumberOfFrames>12</NumberOfFrames>			
-		</Animation>
-		<Animation Name="Walk_Left_Sup">
-			<NumberOfFrames>12</NumberOfFrames>			
-		</Animation>
-	</AnimationTileSet>
 	<AnimationTileSet Name="CharacterA" FileName="test.png">
 		<FrameWidth>64</FrameWidth>
 		<FrameHeight>64</FrameHeight>
@@ -48,5 +32,33 @@
 		<Animation Name="Level3">
 			<NumberOfFrames>4</NumberOfFrames>
 		</Animation>
+	</AnimationTileSet>
+	<AnimationTileSet Name="Faith" FileName="faith.png">
+		<FrameWidth>102</FrameWidth>
+		<FrameHeight>231</FrameHeight>
+		<Animation Name="StandBy">
+			<NumberOfFrames>1</NumberOfFrames>			
+		</Animation>		
+	</AnimationTileSet>
+	<AnimationTileSet Name="Innocence" FileName="innocence.png">
+		<FrameWidth>51</FrameWidth>
+		<FrameHeight>174</FrameHeight>
+		<Animation Name="StandBy">
+			<NumberOfFrames>1</NumberOfFrames>			
+		</Animation>		
+	</AnimationTileSet>
+	<AnimationTileSet Name="Science" FileName="science.png">
+		<FrameWidth>74</FrameWidth>
+		<FrameHeight>231</FrameHeight>
+		<Animation Name="StandBy">
+			<NumberOfFrames>1</NumberOfFrames>			
+		</Animation>		
+	</AnimationTileSet>
+	<AnimationTileSet Name="BlackHole" FileName="blackhole.png">
+		<FrameWidth>190</FrameWidth>
+		<FrameHeight>143</FrameHeight>
+		<Animation Name="StandBy">
+			<NumberOfFrames>1</NumberOfFrames>			
+		</Animation>		
 	</AnimationTileSet>
 </Animations> 

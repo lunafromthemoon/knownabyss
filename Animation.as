@@ -14,14 +14,16 @@
 		
 		private var animLastFrame:int;
 		private var animDelay:Array;
-		private var animFrameSize:int;
+		private var animFrameW:int;
+		private var animFrameH:int;
 
-		public function Animation(animName:String,tiles:BitmapData,animFrameSize:int,animLastFrame:int,animDelay:Array=null) {
+		public function Animation(animName:String,tiles:BitmapData,animFrameW:int,animFrameH:int,animLastFrame:int,animDelay:Array=null) {
 			this.tiles = tiles;
 			this.animName = animName;
 			this.animLastFrame = animLastFrame;
 			this.animDelay = animDelay;
-			this.animFrameSize = animFrameSize;
+			this.animFrameW = animFrameW;
+			this.animFrameH = animFrameH;
 		}
 		
 		public function getName():String{
@@ -33,8 +35,8 @@
 		}
 		
 		public function getNextFrame():BitmapData{
-			var frame:BitmapData = new BitmapData(animFrameSize,animFrameSize,true, 0x00FF0000);
-			var rect:Rectangle = new Rectangle(animIndex*animFrameSize,0,animFrameSize,animFrameSize);
+			var frame:BitmapData = new BitmapData(animFrameW,animFrameH,true, 0x00FF0000);
+			var rect:Rectangle = new Rectangle(animIndex*animFrameH,0,animFrameW,animFrameH);
 			frame.copyPixels(tiles,rect,new Point(0,0));
 			
 			animCount++;
