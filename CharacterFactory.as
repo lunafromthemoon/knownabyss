@@ -5,7 +5,7 @@
 	
 	public class CharacterFactory {
 		//faith, science, love, wisdom, art, innocence
-		private static var charNames:Array = new Array("A","B","C","D","E","F");
+		public static var charNames:Array = new Array("A","B","C","D","E","F");
 		private static var positions:Array = new Array(
 			new Point(550, 300),
 			new Point(150, 140),

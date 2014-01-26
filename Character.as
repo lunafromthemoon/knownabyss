@@ -29,7 +29,6 @@
 		public function setMask(){			
 			clickMask = new Sprite();
 			clickMask.graphics.beginFill(0xFFAAFF);
-			//clickMask.graphics.drawCircle(maskPos.x, maskPos.y, 30);
 			clickMask.graphics.drawEllipse(maskPos.x, maskPos.y, currentAnimation.animFrameW * 0.8, currentAnimation.animFrameH);
 			clickMask.graphics.endFill();			
 			clickMask.alpha = 0;

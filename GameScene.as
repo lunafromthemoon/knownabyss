@@ -7,6 +7,10 @@
 	import flash.geom.Point;
 	import flash.events.MouseEvent;
 	import flash.filters.GlowFilter; 
+	import fl.transitions.Tween;
+	import fl.transitions.TweenEvent;
+	import fl.transitions.easing.*;
+	import flash.display.Shape;
 	
 	public class GameScene extends MovieClip 
 	{
@@ -20,10 +24,24 @@
 		private var cursorDisplay:Bitmap = null;
 		private var hole:Hole = new Hole();
 		private var cursor:Cursor = new Cursor();
+		public static var currentMove:int = -1;
 		
 		public function GameScene() {			
 			bitmapManager.addEventListener(BitmapManager.TILES_LOADED,startGame);
 			bitmapManager.loadAll();
+			addEventListener("YouWin", onYouWin);
+			dispatchEvent(new Event("YouWin"));
+		}
+		
+		public function onYouWin(e:Event)
+		{
+			var fade = new Shape();
+			fade.graphics.beginFill(0x000000, 1);
+			fade.graphics.drawRect(0, 0, 800, 600);
+			fade.graphics.endFill();
+			
+			var fadeInTween = new Tween(fade, "alpha", None.easeOut, 0, 0.7, 2, true);
+			fadeInTween.start();
 		}
 		
 		public function clickOnChar(e:Event) {
@@ -44,8 +62,8 @@
 			characters[3].setAnimations( bitmapManager.getAnimationsFromTileSet("Wisdom"));
 			characters[4].setAnimations( bitmapManager.getAnimationsFromTileSet("Art"));
 			characters[5].setAnimations( bitmapManager.getAnimationsFromTileSet("Innocence"));
-			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(200,400));
-			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(264,400));
+			characters[0].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionA"),new Point(200,100));
+			characters[1].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionB"),new Point(200,100));
 			characters[2].getEvol().setAnimations(bitmapManager.getAnimationsFromTileSet("EvolutionC"),new Point(328,400));
 			backgroundDisplay = new Bitmap(bitmapManager.getTileSet("Background"));
 			backgroundDisplay.x = backgroundDisplay.y = 0;
@@ -106,7 +124,8 @@
 				if (anim!=null) {
 					var tile:BitmapData = anim.getNextFrame();					
 					this.charactersDisplay[i] = new Bitmap(tile);
-					this.charactersDisplay[i].x = this.charactersDisplay[i].y = 400;
+					this.charactersDisplay[i].x = characters[i].getEvol().position.x;
+					this.charactersDisplay[i].y = characters[i].getEvol().position.y;
 					this.addChild(charactersDisplay[i]);
 				}				
 			}
